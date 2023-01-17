@@ -1,20 +1,20 @@
 import Head from "next/head";
-import Link from "next/link";
 import Layout, { siteTitle } from "../components/layout";
 import utilStyles from "../styles/utils.module.css";
 import { getSortedPostsData } from "../lib/posts";
+import Link from "next/link";
 import Date from "../components/date";
+import { GetStaticProps } from "next";
 
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
-  return {
-    props: {
-      allPostsData,
-    },
-  };
-}
-
-export default function Home({ allPostsData }) {
+export default function Home({
+  allPostsData,
+}: {
+  allPostsData: {
+    date: string;
+    title: string;
+    id: string;
+  }[];
+}) {
   return (
     <Layout home>
       <Head>
@@ -23,7 +23,7 @@ export default function Home({ allPostsData }) {
       <section className={utilStyles.headingMd}>
         <p>Hello! I am a frontend and backend web developer.</p>
 
-        <p>I can make web-sites (both frontend and backend) and desktop apps. Please contact me if interested:</p>
+        <p>I can make web-sites and desktop apps. Please contact me if interested:</p>
 
         <ul>
           <li><a href="https://t.me/VitalSense">Telegram @VitalSense</a></li>
@@ -32,10 +32,9 @@ export default function Home({ allPostsData }) {
 
         <p>
           This site is the result of me following <a href="https://nextjs.org/learn">the Next.js tutorial</a> (which is,
-          btw, great, thank you, NextJS). It contains a few sample blog post pages:
+          btw, great, thank you, NextJS). There are a few sample blog post pages at here:
         </p>
       </section>
-
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
@@ -53,3 +52,12 @@ export default function Home({ allPostsData }) {
     </Layout>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const allPostsData = getSortedPostsData();
+  return {
+    props: {
+      allPostsData,
+    },
+  };
+};
