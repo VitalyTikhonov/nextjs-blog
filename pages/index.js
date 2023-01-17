@@ -21,10 +21,18 @@ export default function Home({ allPostsData }) {
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>[Your Self Introduction]</p>
+        <p>Hello! I am a frontend and backend web developer.</p>
+
+        <p>I can make web-sites (both frontend and backend) and desktop apps. Please contact me if interested:</p>
+
+        <ul>
+          <li><a href="https://t.me/VitalSense">Telegram @VitalSense</a></li>
+          <li><a href="mailto:vitaliy.a.tikhonov@yandex.ru">vitaliy.a.tikhonov@yandex.ru</a></li>
+        </ul>
+
         <p>
-          (This is a sample website - you’ll be building a site like this on{" "}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
+          This site is the result of me following <a href="https://nextjs.org/learn">the Next.js tutorial</a> (which is,
+          btw, great, thank you, NextJS). It contains a few sample blog post pages:
         </p>
       </section>
 
